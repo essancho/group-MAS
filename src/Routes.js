@@ -5,6 +5,7 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 import Homepage from "./components/Homepage/Homepage";
 import Login from "./components/Login/Login";
+import Navbar from "./components/Navbar/Navbar";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Signup from "./components/Signup/Signup";
 import UpdateProfile from "./components/UpdateProfile/UpdateProfile";
@@ -14,6 +15,7 @@ const Routes = () => {
     return (
         <BrowserRouter>
             <AuthProvider>
+                <Navbar />
                 <Switch>
                     <Route exact path="/" component={Homepage} />
                     <PrivateRoute
