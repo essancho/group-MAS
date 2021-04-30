@@ -1,0 +1,72 @@
+{
+    "products": [
+        {
+            "men": [
+                {
+                    "id": 1,
+                    "title": "First",
+                    "price": 30,
+                    "type": "tshirt",
+                    "size": "l",
+                    "img1": "https://cdn.shopify.com/s/files/1/0496/8602/0247/products/AlohaCubanShirtFront_900x.jpg?v=1617895057",
+                    "img2": "https://cdn.shopify.com/s/files/1/0496/8602/0247/products/2D9A4376-2_900x.jpg?v=1617895057"
+                },
+                {
+                    "id": 2,
+                    "title": "Second",
+                    "price": 120,
+                    "type": "pants",
+                    "size": "s",
+                    "img1": "https://cdn.shopify.com/s/files/1/0496/8602/0247/products/ServiceFatiguesFront_900x.jpg?v=1614612613",
+                    "img2": "https://cdn.shopify.com/s/files/1/0496/8602/0247/products/2D9A4221-2_900x.jpg?v=1614612613"
+                },
+                {
+                    "id": 3,
+                    "title": "Third",
+                    "price": 70,
+                    "type": "hats",
+                    "size": "s",
+                    "img1": "https://cdn.shopify.com/s/files/1/0496/8602/0247/products/GoodTimesCompanyFront_900x.jpg?v=1614703630",
+                    "img2": "https://cdn.shopify.com/s/files/1/0496/8602/0247/products/GoodTimesCompanyBack_900x.jpg?v=1614703630"
+                }
+            ]
+        },
+        {
+            "women": [
+                {
+                    "id": 4,
+                    "title": "Third",
+                    "price": 70,
+                    "type": "hats",
+                    "size": "s",
+                    "img1": "https://cdn.shopify.com/s/files/1/0496/8602/0247/products/GoodTimesCompanyFront_900x.jpg?v=1614703630",
+                    "img2": "https://cdn.shopify.com/s/files/1/0496/8602/0247/products/GoodTimesCompanyBack_900x.jpg?v=1614703630"
+                }
+            ]
+        },
+        {
+            "goods": [
+                {
+                    "id": 5,
+                    "title": "Third",
+                    "price": 70,
+                    "type": "hats",
+                    "size": "s",
+                    "img1": "https://cdn.shopify.com/s/files/1/0496/8602/0247/products/GoodTimesCompanyFront_900x.jpg?v=1614703630",
+                    "img2": "https://cdn.shopify.com/s/files/1/0496/8602/0247/products/GoodTimesCompanyBack_900x.jpg?v=1614703630"
+                },
+                {
+                    "id": 6,
+                    "title": "Third",
+                    "price": 70,
+                    "type": "hats",
+                    "size": "s",
+                    "img1": "https://cdn.shopify.com/s/files/1/0496/8602/0247/products/GoodTimesCompanyFront_900x.jpg?v=1614703630",
+                    "img2": "https://cdn.shopify.com/s/files/1/0496/8602/0247/products/GoodTimesCompanyBack_900x.jpg?v=1614703630"
+                }
+            ]
+        }
+    ],
+    "orders": [],
+    "users": []
+}
