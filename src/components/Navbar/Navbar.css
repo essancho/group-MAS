@@ -12,12 +12,12 @@
     font-family: "Montserrat", sans-serif !important;
     font-size: 14px;
     text-decoration: none;
-    font-weight: 400 im !important;
+    font-weight: bold !important;
     color: black;
 }
 
 .header-container {
-    width: 90%;
+    width: 85%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;

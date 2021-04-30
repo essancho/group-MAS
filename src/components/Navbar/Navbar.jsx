@@ -10,7 +10,7 @@ const Navbar = () => {
             <header className="header">
                 <div className="header-container">
                     <Typography
-                        variant="h5"
+                        variant="h4"
                         className="logo"
                         to="/"
                         component={Link}
