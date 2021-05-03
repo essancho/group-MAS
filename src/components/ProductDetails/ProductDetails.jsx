@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-import { Button } from "@material-ui/core";
 import React, { useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
-=======
-import React, { useContext, useEffect } from "react";
->>>>>>> cd81ef4b2de49554d9c97e906d42a8394fd834b2
 import { productsContext } from "../../contexts/ProductContext";
 
 const ProductDetails = (props) => {
@@ -26,9 +20,11 @@ const ProductDetails = (props) => {
                     </div>
                 )}
             </div>
+
             <Button to="/edit-product" component={Link}>
                 Edit Product
             </Button>
+
         </div>
     );
 };
