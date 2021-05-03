@@ -20,6 +20,11 @@ const ProductDetails = (props) => {
                     </div>
                 )}
             </div>
+
+            <Button to="/edit-product" component={Link}>
+                Edit Product
+            </Button>
+
         </div>
     );
 };
