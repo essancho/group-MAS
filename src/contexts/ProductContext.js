@@ -7,6 +7,7 @@ const INIT_STATE = {
     newProducts: [],
     allProducts: [],
     womenProducts: [],
+    productDetails: [],
 };
 
 const reducer = (state = INIT_STATE, action) => {
@@ -19,6 +20,8 @@ const reducer = (state = INIT_STATE, action) => {
             return { ...state, womenProducts: action.payload };
         case "GET_NEW_PRODUCTS":
             return { ...state, newProducts: action.payload };
+        case "GET_PRODUCT_BY_ID":
+            return { ...state, productDetails: action.payload };
 
         default:
             return state;
@@ -104,7 +107,21 @@ const ProductsContextProvider = ({ children }) => {
         getNewCollection();
     }
 
+    async function getProductById(id) {
+        let arr2 = [];
+        let data = collection.doc(id);
+        await data.get().then((doc) => {
+            arr2.push(doc.data());
+        });
+        console.log(arr2[0]);
+        dispatch({
+            type: "GET_PRODUCT_BY_ID",
+            payload: arr2,
+        });
+    }
+
     const value = {
+        productDetails: state.productDetails,
         allProducts: state.allProducts,
         womenProducts: state.womenProducts,
         menProducts: state.menProducts,
@@ -115,6 +132,7 @@ const ProductsContextProvider = ({ children }) => {
         getWomenCollection,
         getMenCollection,
         addProduct,
+        getProductById,
     };
     return (
         <productsContext.Provider value={value}>
