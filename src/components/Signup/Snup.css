@@ -1,34 +1,37 @@
-
-.singUpForm{
-    padding-top: 35px;
-    font-family: 'Montserrat', sans-serif;
-    height: 530px;
-    width: 1520px;
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #f3efeb;
+}
+
+.singUpForm {
+    padding-top: 35px;
+    font-family: "Montserrat", sans-serif;
+    height: 530px;
+    width: 700px;
     display: flex;
     flex-direction: column;
     text-align: center;
- 
 }
-.inpSign{
+.inpSign {
     height: 50px;
     width: 600px;
     margin-bottom: 12px !important;
 }
-.btnSn{
+.btnSn {
     margin-bottom: 12px !important;
     color: white !important;
     height: 52px !important;
     width: 602px !important;
-    background-color: #2c241d !important; 
+    background-color: #2c241d !important;
 }
-.checkBLike{
+.checkBLike {
     display: flex;
     flex-direction: row;
     justify-content: center;
     text-align: start;
 }
-.checkByour{
+.checkByour {
     font-size: 50px !important;
 }
-

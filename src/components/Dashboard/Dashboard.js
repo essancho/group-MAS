@@ -13,11 +13,12 @@ const Dashboard = () => {
         setError("");
         try {
             await logout();
-            history.push("/login");
+            history.push("/");
         } catch {
             setError("Failed to Log Out");
         }
     }
+    console.log(currentUser);
     return (
         <>
             <h2 className="text-center mb-4">Profile</h2>

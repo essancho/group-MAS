@@ -1,6 +1,6 @@
 import { Button, TextField } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
-import React, { useContext, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";

@@ -1,15 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
-import { auth } from "../components/firebase/firebase";
+import { auth, db } from "../components/firebase/firebase";
 const AuthContext = React.createContext();
 export function useAuth() {
     return useContext(AuthContext);
 }
 export function AuthProvider({ children }) {
+    let userCollection = db.collection("users");
     const [currentUser, setCurrentUser] = useState();
     const [loading, setLoading] = useState(true);
+
+    async function addUser(user) {
+        await userCollection.add(user);
+    }
     function signup(email, password) {
         return auth.createUserWithEmailAndPassword(email, password);
     }
+
     function login(email, password) {
         return auth.signInWithEmailAndPassword(email, password);
     }
@@ -38,6 +44,7 @@ export function AuthProvider({ children }) {
 
     const value = {
         currentUser,
+        addUser,
         signup,
         login,
         logout,

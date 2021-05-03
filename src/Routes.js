@@ -1,11 +1,14 @@
 import React from "react";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import AddNewProduct from "./components/AddNewProduct/AddNewProduct";
+import MenCategory from "./components/Collections/MenCategory";
 import Dashboard from "./components/Dashboard/Dashboard";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 import Homepage from "./components/Homepage/Homepage";
 import Login from "./components/Login/Login";
 import Navbar from "./components/Navbar/Navbar";
+import AdminPrivateRoute from "./components/PrivateRoute/AdminPrivateRoute";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Signup from "./components/Signup/Signup";
 import UpdateProfile from "./components/UpdateProfile/UpdateProfile";
@@ -19,6 +22,11 @@ const Routes = () => {
                 <ProductsContextProvider>
                     <Navbar />
                     <Switch>
+                        <AdminPrivateRoute
+                            exact
+                            path="/add-product"
+                            component={AddNewProduct}
+                        />
                         <Route exact path="/" component={Homepage} />
                         <PrivateRoute
                             exact
@@ -35,6 +43,7 @@ const Routes = () => {
                             path="/forgot-password"
                             component={ForgotPassword}
                         />
+                        <Route exact path="/men" component={MenCategory} />
                     </Switch>
                 </ProductsContextProvider>
             </AuthProvider>

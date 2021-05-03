@@ -1,0 +1,24 @@
+@font-face {
+    font-family: "moret";
+    src: local("FontsFree-Net-moret4.ttf"), local("Moret Regular"),
+        url("../../assets/fonts/FontsFree-Net-moret4.ttf") format("woff2");
+}
+
+.new-last-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 345px;
+    height: 430px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.last-card-text {
+    font-family: "moret";
+    font-weight: bold;
+    color: #7e7469;
+    font-size: 26px;
+    text-align: center;
+    width: 345px;
+}
