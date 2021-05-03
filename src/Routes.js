@@ -10,6 +10,7 @@ import Login from "./components/Login/Login";
 import Navbar from "./components/Navbar/Navbar";
 import AdminPrivateRoute from "./components/PrivateRoute/AdminPrivateRoute";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import ProductDetails from "./components/ProductDetails/ProductDetails";
 import Signup from "./components/Signup/Signup";
 import UpdateProfile from "./components/UpdateProfile/UpdateProfile";
 import { AuthProvider } from "./contexts/AuthContext";
@@ -39,6 +40,7 @@ const Routes = () => {
                         />
                         <Route path="/signup" component={Signup} />
                         <Route path="/login" component={Login} />
+                        <Route path="/details/:id" component={ProductDetails} />
                         <Route
                             path="/forgot-password"
                             component={ForgotPassword}
