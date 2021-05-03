@@ -1,66 +1,39 @@
-import { Button, ButtonGroup, IconButton, Typography } from "@material-ui/core";
-import { FavoriteBorderOutlined, PersonOutlined, SearchOutlined, ShoppingBasketOutlined } from "@material-ui/icons";
-import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
+import { Button, IconButton, Typography } from "@material-ui/core";
+import { PersonOutlined } from "@material-ui/icons";
 import React from "react";
 import { Link } from "react-router-dom";
-import Logo from "../../assets/logo/pco-logo.png";
+import { useAuth } from "../../contexts/AuthContext";
+import { adminUID } from "../../helpers/API";
 import "./Navbar.css";
 const Navbar = () => {
+    const { currentUser } = useAuth();
     return (
         <div>
             <header className="header">
                 <div className="header-container">
-                    <div className="nav-menu">
-                        <Typography
-                            variant="h4"
-                            className="logo"
-                            to="/"
-                            component={Link}
-                        >
-                            P&Co
-                        </Typography>
-                    </div>
-
-                    <div>
-                        <ul className="category-menu">
-                            <Link to="/">
-                                <li className="item-men">
-                                    Men
-                                </li>
-                            </Link> 
-
-                            <Link to="/">
-                                <li className="item-woman">
-                                    Women
-                                </li>
-                            </Link> 
-
-                            <Link to="/">
-                                <li className="item-goods">
-                                    Goods
-                                </li>
-                            </Link> 
-                        </ul>
-                    </div>
-
-                    <div className="nav-icon">
+                    <Typography
+                        variant="h4"
+                        className="logo"
+                        to="/"
+                        component={Link}
+                    >
+                        P&Co
+                    </Typography>
+                    {currentUser ? (
+                        <Button to="/dashboard" component={Link}>
+                            <PersonOutlined />
+                            {currentUser.email}
+                        </Button>
+                    ) : (
                         <IconButton to="/login" component={Link}>
                             <PersonOutlined />
                         </IconButton>
-
-                        <IconButton>
-                            <SearchOutlined />
-                        </IconButton>
-
-                        <IconButton>
-                            <FavoriteBorderOutlined />
-                        </IconButton>
-                        
-                        <IconButton>
-                            <ShoppingCartOutlinedIcon />
-                        </IconButton>
-                    </div>
-
+                    )}
+                    {currentUser && currentUser.uid === adminUID ? (
+                        <Button to="/add-product" component={Link}>
+                            Add new product
+                        </Button>
+                    ) : null}
                 </div>
             </header>
         </div>

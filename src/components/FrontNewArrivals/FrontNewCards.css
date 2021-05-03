@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap");
+@font-face {
+    font-family: "moret";
+    src: local("FontsFree-Net-moret4.ttf"), local("Moret Regular"),
+        url("../../assets/fonts/FontsFree-Net-moret4.ttf") format("woff2");
+}
+
+.front-cards {
+    width: 345px;
+    height: 550px;
+    margin-right: 20px;
+    text-align: left;
+    position: relative;
+}
+.new {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    background-color: rgba(44, 36, 29, 0.8);
+    color: white;
+    padding: 5px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+}
+
+.front-cards img {
+    width: 345px;
+}
+
+.cards-title {
+    font-family: "moret";
+    font-size: 25px;
+    font-weight: bolder;
+}
+
+.cards-price {
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    font-weight: lighter;
+}

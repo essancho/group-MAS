@@ -1,1 +1,1 @@
-export const JSON_API = "http://localhost:8000/products";
+export const adminUID = "8MCFCYqcllY4A4FWRd78WB7e8wr1";
