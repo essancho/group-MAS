@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import AddNewProduct from "./components/AddNewProduct/AddNewProduct";
 import MenCategory from "./components/Collections/MenCategory";
 import Dashboard from "./components/Dashboard/Dashboard";
+import EditProduct from "./components/EditProduct/EditProduct";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 import Homepage from "./components/Homepage/Homepage";
 import Login from "./components/Login/Login";
@@ -26,6 +27,11 @@ const Routes = () => {
                             exact
                             path="/add-product"
                             component={AddNewProduct}
+                        />
+                        <AdminPrivateRoute
+                            exact
+                            path="/edit-product"
+                            component={EditProduct}
                         />
                         <Route exact path="/" component={Homepage} />
                         <PrivateRoute
