@@ -31,7 +31,7 @@ const Routes = () => {
                         />
                         <AdminPrivateRoute
                             exact
-                            path="/edit-product"
+                            path="/edit-product/:id"
                             component={EditProduct}
                         />
                         <Route exact path="/" component={Homepage} />

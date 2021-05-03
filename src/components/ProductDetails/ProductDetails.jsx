@@ -23,9 +23,7 @@ const ProductDetails = (props) => {
                 )}
             </div>
             <Button></Button>
-            <Button to="/edit-product" component={Link}>
-                Edit Product
-            </Button>
+            <Link to={`/edit-product/${props.match.params.id}`}>Edit</Link>
         </div>
     );
 };
