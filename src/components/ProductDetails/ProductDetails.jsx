@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { productsContext } from "../../contexts/ProductContext";
 
 const ProductDetails = (props) => {
@@ -24,7 +25,6 @@ const ProductDetails = (props) => {
             <Button to="/edit-product" component={Link}>
                 Edit Product
             </Button>
-
         </div>
     );
 };
