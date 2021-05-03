@@ -120,12 +120,18 @@ const ProductsContextProvider = ({ children }) => {
         });
     }
 
+    async function updateProduct(id, obj) {
+        await collection.doc(id).update(obj);
+        getCollection();
+    }
+
     const value = {
         productDetails: state.productDetails,
         allProducts: state.allProducts,
         womenProducts: state.womenProducts,
         menProducts: state.menProducts,
         newProducts: state.newProducts,
+        updateProduct,
         deleteProduct,
         getCollection,
         getNewCollection,

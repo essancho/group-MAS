@@ -1,9 +1,12 @@
 import { Button } from "@material-ui/core";
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 import { productsContext } from "../../contexts/ProductContext";
+import { adminUID } from "../../helpers/API";
 
 const ProductDetails = (props) => {
+    const { currentUser } = useAuth();
     const { getProductById, productDetails } = useContext(productsContext);
     useEffect(() => {
         getProductById(props.match.params.id);
@@ -22,8 +25,12 @@ const ProductDetails = (props) => {
                     </div>
                 )}
             </div>
-            <Button></Button>
-            <Link to={`/edit-product/${props.match.params.id}`}>Edit</Link>
+            {currentUser && currentUser.uid === adminUID ? (
+                <Link to={`/edit-product/${props.match.params.id}`}>
+                    {" "}
+                    <button>Edit</button>{" "}
+                </Link>
+            ) : null}
         </div>
     );
 };

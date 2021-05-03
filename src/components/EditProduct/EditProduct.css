@@ -1,0 +1,21 @@
+.edit-container {
+    padding: 40px;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f3efeb;
+}
+
+.edit-container input {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+}
+
+.edit-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px;
+    background-color: #f3efeb;
+}
