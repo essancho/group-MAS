@@ -23,3 +23,25 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.nav-menu{
+    display: flex;
+    margin-left: 80px;
+}
+
+.category-menu{
+    font-family: "Montserrat", sans-serif !important;
+    display: flex;
+    flex-direction: row;
+    margin-left: -500px;
+    font-size: 14px;
+    list-style-type: none;
+}
+
+.item-men{
+    padding-right: 40px;
+}
+
+.item-woman{
+    padding-right: 40px;
+}
