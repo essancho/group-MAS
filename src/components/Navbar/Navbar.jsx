@@ -1,10 +1,12 @@
-import { Button, ButtonGroup, IconButton, Typography } from "@material-ui/core";
+import { Button, IconButton, Typography } from "@material-ui/core";
 import { PersonOutlined } from "@material-ui/icons";
 import React from "react";
 import { Link } from "react-router-dom";
-import Logo from "../../assets/logo/pco-logo.png";
+import { useAuth } from "../../contexts/AuthContext";
+import { adminUID } from "../../helpers/API";
 import "./Navbar.css";
 const Navbar = () => {
+    const { currentUser } = useAuth();
     return (
         <div>
             <header className="header">
@@ -17,9 +19,21 @@ const Navbar = () => {
                     >
                         P&Co
                     </Typography>
-                    <IconButton to="/login" component={Link}>
-                        <PersonOutlined />
-                    </IconButton>
+                    {currentUser ? (
+                        <Button to="/dashboard" component={Link}>
+                            <PersonOutlined />
+                            {currentUser.email}
+                        </Button>
+                    ) : (
+                        <IconButton to="/login" component={Link}>
+                            <PersonOutlined />
+                        </IconButton>
+                    )}
+                    {currentUser && currentUser.uid === adminUID ? (
+                        <Button to="/add-product" component={Link}>
+                            Add new product
+                        </Button>
+                    ) : null}
                 </div>
             </header>
         </div>

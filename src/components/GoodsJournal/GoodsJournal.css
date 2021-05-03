@@ -1,0 +1,42 @@
+@font-face {
+    font-family: "moret";
+    src: local("FontsFree-Net-moret4.ttf"), local("Moret Regular"),
+        url("../../assets/fonts/FontsFree-Net-moret4.ttf") format("woff2");
+}
+
+.good-journal-container {
+    height: 630px;
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+}
+.good-journal-container a {
+    text-decoration: none;
+}
+.goods-big-category {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 630px;
+    min-width: 650px;
+    background-image: url(../../assets/img/mainpage/goods.jpeg);
+    background-size: cover;
+    background-position-y: -50px;
+    cursor: pointer;
+}
+.journal-big-category {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 630px;
+    min-width: 650px;
+    background-image: url(../../assets/img/mainpage/journal.jpeg);
+    background-size: cover;
+    cursor: pointer;
+}
+
+.goods-btn {
+    color: #f3efeb;
+    font-size: 60px;
+    font-family: "moret";
+}

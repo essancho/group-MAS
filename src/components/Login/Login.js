@@ -1,5 +1,5 @@
-import React, { useContext, useRef, useState } from "react";
-import { Button, Container, TextField } from "@material-ui/core";
+import React, { useRef, useState } from "react";
+import { Button, TextField } from "@material-ui/core";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import Alert from "@material-ui/lab/Alert";
@@ -33,7 +33,7 @@ const Login = () => {
             setLoading(true);
             console.log(emailRef.current.value, passwordRef.current.value);
             await login(emailRef.current.value, passwordRef.current.value);
-            history.push("/dashboard");
+            history.push("/");
         } catch {
             setError("Failed to sign in");
             console.log(error);
@@ -42,7 +42,7 @@ const Login = () => {
     }
 
     return (
-        <Container className="loginForm-container">
+        <div className="loginForm-container">
             <div className="loginForm">
                 <h3 className={classes.loginTitleSN}>
                     Sign in to your P&Co account
@@ -52,14 +52,15 @@ const Login = () => {
                 </p>
                 <p>
                     Any order placed before 28th October 2020 can be accessed{" "}
-                    <a href="#">here</a>. If you can't login with your details
+                    <a href="/">here</a>. If you can't login with your details
                     <br />
                     you may have registered on our rest of world store but you
-                    can <a href="#">register</a> on this store with the same
+                    can <a href="/signup">register</a> on this store with the
+                    same
                     <br /> details.
                 </p>
-                {error && <Alert>{error}</Alert>}
                 <form onSubmit={handleSubmit}>
+                    {error && <Alert severity="error">{error}</Alert>}
                     <div>
                         <TextField
                             className="inpLog"
@@ -92,7 +93,7 @@ const Login = () => {
                     </Button>
                 </div>
             </div>
-        </Container>
+        </div>
     );
 };
 
