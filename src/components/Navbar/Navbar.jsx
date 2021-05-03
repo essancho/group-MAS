@@ -1,7 +1,4 @@
 
-import { Button, IconButton, Typography } from "@material-ui/core";
-import { PersonOutlined } from "@material-ui/icons";
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
@@ -13,7 +10,6 @@ const Navbar = () => {
         <div>
             <header className="header">
                 <div className="header-container">
-
                     <Typography
                         variant="h4"
                         className="logo"
@@ -37,7 +33,6 @@ const Navbar = () => {
                             Add new product
                         </Button>
                     ) : null}
-
                 </div>
             </header>
         </div>
