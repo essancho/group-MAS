@@ -26,12 +26,9 @@ const ProductDetails = (props) => {
                     </div>
                 )}
             </div>
-<<<<<<< HEAD
             <Button to="/edit-product" component={Link}>
                 Edit Product
             </Button>
-=======
->>>>>>> cd81ef4b2de49554d9c97e906d42a8394fd834b2
         </div>
     );
 };
