@@ -10,7 +10,7 @@ const FrontBigCategory = () => {
                         <span className="category-btn">Men</span>
                     </div>
                 </Link>
-                <Link to="/women">
+                <Link to="/women-category">
                     <div className="women-big-category">
                         <span className="category-btn">Women</span>
                     </div>

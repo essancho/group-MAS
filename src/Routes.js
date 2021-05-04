@@ -2,7 +2,9 @@ import React from "react";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import AddNewProduct from "./components/AddNewProduct/AddNewProduct";
+
 import MenCategory from "./components/Collections/MenCategory";
+import WomenCategory from "./components/Collections/WomenCollection/WomenCategory";
 import Dashboard from "./components/Dashboard/Dashboard";
 import EditProduct from "./components/EditProduct/EditProduct";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
@@ -52,6 +54,11 @@ const Routes = () => {
                             component={ForgotPassword}
                         />
                         <Route exact path="/men" component={MenCategory} />
+                        <Route
+                            exact
+                            path="/women-category"
+                            component={WomenCategory}
+                        />
                     </Switch>
                 </ProductsContextProvider>
             </AuthProvider>

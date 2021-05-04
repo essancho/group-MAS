@@ -18,7 +18,20 @@ const ProductDetails = (props) => {
                 {productDetails[0] && (
                     <div>
                         <p>{productDetails[0].title}</p>
-                        <p>${productDetails[0].price}.00</p>
+                        {productDetails[0].category === "sale" ? (
+                            <div>
+                                <span>${productDetails[0].price}.00 </span>
+                                <span className="cards-price cards-price-saled">
+                                    $
+                                    {Math.ceil(
+                                        (productDetails[0].price / 5) * 4
+                                    )}
+                                    .00
+                                </span>
+                            </div>
+                        ) : (
+                            <p>${productDetails[0].price}.00</p>
+                        )}
                         <p>{productDetails[0].desc}</p>
                         <img src={productDetails[0].img1} alt="" />
                         <img src={productDetails[0].img2} alt="" />

@@ -17,9 +17,15 @@ const FrontNewCards = (props) => {
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
         >
-            <div className="new">
-                <span>NEW</span>
-            </div>
+            {props.item.category === "new" ? (
+                <div className="new">
+                    <span>NEW</span>
+                </div>
+            ) : (
+                <div className="sale">
+                    <span>20% OFF</span>
+                </div>
+            )}
             <Link to={`/details/${props.item.id}`}>
                 {hover ? (
                     <img src={props.item.img2} alt="img-hover-1" />
@@ -29,7 +35,18 @@ const FrontNewCards = (props) => {
             </Link>
             <br />
             <span className="cards-title">{props.item.title}</span> <br />
-            <span className="cards-price">${props.item.price}.00</span>
+            {props.item.category === "sale" ? (
+                <div>
+                    <span className="cards-price cards-price-sale">
+                        ${props.item.price}.00
+                    </span>
+                    <span className="cards-price cards-price-saled">
+                        ${Math.ceil((props.item.price / 5) * 4)}.00
+                    </span>
+                </div>
+            ) : (
+                <span className="cards-price">${props.item.price}.00</span>
+            )}
             {currentUser && currentUser.uid === adminUID ? (
                 <IconButton onClick={() => deleteProduct(props.item.id)}>
                     <Delete />

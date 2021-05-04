@@ -6,6 +6,8 @@ import Offers from "../Offers/Offers";
 import FrontBigCategory from "../FrontBigCategory/FrontBigCategory";
 import FrontNewArrivals from "../FrontNewArrivals/FrontNewArrivals";
 import GoodsJournal from "../GoodsJournal/GoodsJournal";
+import FrontSaleProducts from "../FrontSaleProducts/FrontSaleProducts";
+import { Container } from "@material-ui/core";
 
 const HomeInfo = () => {
     return (
@@ -14,6 +16,7 @@ const HomeInfo = () => {
             <Offers />
             <FrontBigCategory />
             <FrontNewArrivals />
+            <FrontSaleProducts />
             <GoodsJournal />
         </>
     );

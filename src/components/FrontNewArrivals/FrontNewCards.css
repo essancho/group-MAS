@@ -22,9 +22,26 @@
     font-family: "Montserrat", sans-serif;
     font-size: 12px;
 }
+.sale {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    background-color: rgba(238, 12, 42, 0.8);
+    color: white;
+    padding: 5px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+}
+.cards-price-sale {
+    color: rgb(255, 5, 5);
+}
 
 .front-cards img {
     width: 345px;
+}
+
+.cards-price-sale {
+    text-decoration: line-through;
 }
 
 .cards-title {
