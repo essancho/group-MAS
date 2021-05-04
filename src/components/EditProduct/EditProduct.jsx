@@ -1,5 +1,5 @@
 import { TextField } from "@material-ui/core";
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useRef, useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { productsContext } from "../../contexts/ProductContext";
 import Radio from "@material-ui/core/Radio";
@@ -8,7 +8,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 
-const EditProduct = () => {
+const EditProduct = (props) => {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const history = useHistory();

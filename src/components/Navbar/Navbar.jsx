@@ -3,6 +3,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { adminUID } from "../../helpers/API";
+import {Typography, Button, IconButton} from "@material-ui/core"
+import {PersonOutlined} from "@material-ui/icons";
+import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
+
 import "./Navbar.css";
 const Navbar = () => {
     const { currentUser } = useAuth();
@@ -23,11 +27,15 @@ const Navbar = () => {
                             <PersonOutlined />
                             {currentUser.email}
                         </Button>
+                        
                     ) : (
                         <IconButton to="/login" component={Link}>
                             <PersonOutlined />
                         </IconButton>
                     )}
+                    <IconButton>
+                        <ShoppingCartOutlinedIcon />
+                    </IconButton>
                     {currentUser && currentUser.uid === adminUID ? (
                         <Button to="/add-product" component={Link}>
                             Add new product
