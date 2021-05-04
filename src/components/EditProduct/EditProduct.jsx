@@ -7,246 +7,150 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
-
+import "./EditProduct.css";
 const EditProduct = (props) => {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const history = useHistory();
     const { getProductById, productDetails } = useContext(productsContext);
+    const [localProducts, setLocalProducts] = useState();
+    const [localP, setLocalP] = useState({});
     useEffect(() => {
         getProductById(props.match.params.id);
     }, []);
 
+    useEffect(() => {
+        setLocalP(productDetails[0]);
+    }, [productDetails]);
+
     let defaultValue = useRef();
     let defaultValueSec = useRef();
-    const { editProduct } = useContext(productsContext);
-    let [product, setProduct] = useState({});
+    const { updateProduct } = useContext(productsContext);
+    let [product, setProduct] = useState();
+
     function handleInputs(e) {
         let newProduct = {
             ...product,
             [e.target.name]: e.target.value,
-            id: "",
-            createdAt: "",
-            size: ["xs", "s", "m", "l", "xl"],
         };
-        console.log(newProduct);
         setProduct(newProduct);
+        console.log(product);
     }
     async function handleSubmit(e) {
         e.preventDefault();
         try {
             setError("");
             setLoading(true);
-            await editProduct(product);
+            await updateProduct(props.match.params.id, product);
             history.goBack();
         } catch {
-            setError("Failed to Add Product");
+            setError("Failed to Edit Product");
             console.log(error);
         }
         setLoading(false);
     }
     return (
         <div className="edit-wrapper">
-            <div className="edit-container">
-                <form onSubmit={handleSubmit}>
-                    <TextField
-                        required
-                        onChange={handleInputs}
-                        label="Title"
-                        placeholder="Enter title"
-                        type="text"
-                        name="title"
-                        id="title-inp"
-                    />
-                    <FormControl
-                        id="gender-inp"
-                        variant="outlined"
-                        margin="dense"
-                        required={true}
-                        size="small"
-                        component="fieldset"
-                    >
-                        <FormLabel component="legend">Gender</FormLabel>
-                        <RadioGroup
-                            required={true}
-                            row
-                            aria-label="gender"
-                            name="gender"
+            {localP ? (
+                <div className="edit-container">
+                    <form onSubmit={handleSubmit}>
+                        <TextField
+                            required
                             onChange={handleInputs}
-                        >
-                            <FormControlLabel
-                                value="women"
-                                control={<Radio />}
-                                label="Women"
-                            />
-                            <FormControlLabel
-                                value="men"
-                                control={<Radio />}
-                                label="Men"
-                            />
-                        </RadioGroup>
-                    </FormControl>
-                    <FormControl
-                        id="type-inp"
-                        variant="outlined"
-                        margin="dense"
-                        required={true}
-                        size="small"
-                        component="fieldset"
-                    >
-                        <FormLabel component="legend">Type</FormLabel>
-                        <RadioGroup
+                            label={localP.title}
+                            type="text"
+                            name="title"
+                            id="title-inp"
+                        />
+
+                        <FormControl
+                            id="new-sale-inp"
+                            variant="outlined"
+                            margin="dense"
                             required={true}
-                            row
-                            aria-label="type"
-                            name="type"
+                            size="small"
+                            component="fieldset"
+                        >
+                            <FormLabel component="legend">
+                                New or Sale?
+                            </FormLabel>
+                            <RadioGroup
+                                required={true}
+                                row
+                                aria-label="new-sale"
+                                name="category"
+                                onChange={handleInputs}
+                            >
+                                <FormControlLabel
+                                    value="new"
+                                    control={<Radio />}
+                                    label="New"
+                                />
+                                <FormControlLabel
+                                    value="sale"
+                                    control={<Radio />}
+                                    label="Sale"
+                                />
+                            </RadioGroup>
+                        </FormControl>
+
+                        <TextField
+                            required
                             onChange={handleInputs}
-                        >
-                            <FormControlLabel
-                                value="tshirt"
-                                control={<Radio />}
-                                label="T Shirt"
-                            />
-                            <FormControlLabel
-                                value="pants"
-                                control={<Radio />}
-                                label="Pants & Shorts"
-                            />
-                            <FormControlLabel
-                                value="shirt"
-                                control={<Radio />}
-                                label="Shirts"
-                            />
-                            <FormControlLabel
-                                value="outerwear"
-                                control={<Radio />}
-                                label="Outerwear"
-                            />
-                            <FormControlLabel
-                                value="goods"
-                                control={<Radio />}
-                                label="Accessories"
-                            />
-                        </RadioGroup>
-                    </FormControl>
-                    <FormControl
-                        id="style-inp"
-                        variant="outlined"
-                        margin="dense"
-                        required={true}
-                        size="small"
-                        component="fieldset"
-                    >
-                        <FormLabel component="legend">Style</FormLabel>
-                        <RadioGroup
-                            required={true}
-                            row
-                            aria-label="style"
-                            name="style"
+                            label={localP.price}
+                            placeholder="Enter price"
+                            type="number"
+                            name="price"
+                            id="price-inp"
+                        />
+
+                        <TextField
+                            required
                             onChange={handleInputs}
-                        >
-                            <FormControlLabel
-                                value="Graphic"
-                                control={<Radio />}
-                                label="Graphic"
-                            />
-                            <FormControlLabel
-                                value="Plain"
-                                control={<Radio />}
-                                label="Plain"
-                            />
-                            <FormControlLabel
-                                value="Striped"
-                                control={<Radio />}
-                                label="Striped"
-                            />
-                        </RadioGroup>
-                    </FormControl>
-                    <FormControl
-                        id="new-sale-inp"
-                        variant="outlined"
-                        margin="dense"
-                        required={true}
-                        size="small"
-                        component="fieldset"
-                    >
-                        <FormLabel component="legend">New or Sale?</FormLabel>
-                        <RadioGroup
-                            required={true}
-                            row
-                            aria-label="new-sale"
-                            name="category"
+                            label={localP.desc && localP.desc.slice(0, 24)}
+                            placeholder="Enter description"
+                            type="text"
+                            name="desc"
+                            id="desc-inp"
+                        />
+
+                        <TextField
+                            required
                             onChange={handleInputs}
-                        >
-                            <FormControlLabel
-                                value="new"
-                                control={<Radio />}
-                                label="New"
-                            />
-                            <FormControlLabel
-                                value="sale"
-                                control={<Radio />}
-                                label="Sale"
-                            />
-                        </RadioGroup>
-                    </FormControl>
+                            inputRef={defaultValue}
+                            placeholder="Enter URL"
+                            type="text"
+                            name="img1"
+                            id="img1-inp"
+                        />
 
-                    <TextField
-                        required
-                        onChange={handleInputs}
-                        label="Price"
-                        placeholder="Enter price"
-                        type="number"
-                        name="price"
-                        id="price-inp"
-                    />
-
-                    <TextField
-                        required
-                        onChange={handleInputs}
-                        label="Description"
-                        placeholder="Enter description"
-                        type="text"
-                        name="desc"
-                        id="desc-inp"
-                    />
-
-                    <TextField
-                        required
-                        onChange={handleInputs}
-                        label="First Picture"
-                        inputRef={defaultValue}
-                        placeholder="Enter URL"
-                        type="text"
-                        name="img1"
-                        id="img1-inp"
-                    />
-
-                    <TextField
-                        required
-                        onChange={handleInputs}
-                        label="Second Picture"
-                        placeholder="Enter URL"
-                        inputRef={defaultValueSec}
-                        type="text"
-                        name="img2"
-                        id="img2-inp"
-                    />
-                    <div className="add-btns">
-                        <button className="add-btnLog" type="submit">
-                            Add New Product
-                        </button>
-                        <button
-                            className="add-btnLog"
-                            disabled={loading}
-                            to="/"
-                            component={Link}
-                        >
-                            Cancel
-                        </button>
-                    </div>
-                </form>
-            </div>
+                        <TextField
+                            required
+                            onChange={handleInputs}
+                            placeholder="Enter URL"
+                            inputRef={defaultValueSec}
+                            type="text"
+                            name="img2"
+                            id="img2-inp"
+                        />
+                        <div className="add-btns">
+                            <button className="add-btnLog" type="submit">
+                                Edit Product
+                            </button>
+                            <button
+                                className="add-btnLog"
+                                disabled={loading}
+                                to="/"
+                                component={Link}
+                            >
+                                Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            ) : (
+                <h1>loading</h1>
+            )}
             <div className="add-img-container">
                 {defaultValue.current ? (
                     <img

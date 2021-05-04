@@ -1,13 +1,15 @@
 import { Button } from "@material-ui/core";
 import React, { useContext, useEffect} from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 import { productsContext } from "../../contexts/ProductContext";
+import { adminUID } from "../../helpers/API";
 
 
 
 
 const ProductDetails = (props) => {
-    const classes = useStyles();
+    const { currentUser } = useAuth();
     const { getProductById, productDetails } = useContext(productsContext);
     useEffect(() => {
         getProductById(props.match.params.id);
@@ -15,30 +17,36 @@ const ProductDetails = (props) => {
     console.log(props.match.params.id);
     return (
         <div>
+            <div>
                 {productDetails[0] && (
-                    <div className={classes.productDetail}>
-                        <div className={classes.productDeskAll}>
+                    <div>
+                        <p>{productDetails[0].title}</p>
+                        {productDetails[0].category === "sale" ? (
                             <div>
-                                <p>{productDetails[0].title}</p>
+                                <span>${productDetails[0].price}.00 </span>
+                                <span className="cards-price cards-price-saled">
+                                    $
+                                    {Math.ceil(
+                                        (productDetails[0].price / 5) * 4
+                                    )}
+                                    .00
+                                </span>
                             </div>
-
-                            <div>
-                                <p>${productDetails[0].price}</p>
-                            </div>
-
-                            <div className={classes.productDesk}>
-                                <p>{productDetails[0].desc}</p>
-                            </div>
-                        </div> 
-                    
-                        <div className={classes.detailsImg}>
-                            <img src={productDetails[0].img1} alt="" />
-                            <img src={productDetails[0].img2} alt="" />
-                        </div>
+                        ) : (
+                            <p>${productDetails[0].price}.00</p>
+                        )}
+                        <p>{productDetails[0].desc}</p>
+                        <img src={productDetails[0].img1} alt="" />
+                        <img src={productDetails[0].img2} alt="" />
                     </div>
                 )}
-            <Button></Button>
-            <Link to={`/edit-product/${props.match.params.id}`}>Edit</Link>
+            </div>
+            {currentUser && currentUser.uid === adminUID ? (
+                <Link to={`/edit-product/${props.match.params.id}`}>
+                    {" "}
+                    <button>Edit</button>{" "}
+                </Link>
+            ) : null}
         </div>
     );
 };

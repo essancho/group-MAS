@@ -14,7 +14,9 @@ const Cover = () => {
                     <Link to="/men">
                         <button className="cover-btn">Shop Men's</button>
                     </Link>
-                    <button className="cover-btn">Shop Women's</button>
+                    <Link to="/women-category">
+                        <button className="cover-btn">Shop Women's</button>
+                    </Link>
                     <button className="cover-btn">Shop Goods</button>
                 </div>
             </div>

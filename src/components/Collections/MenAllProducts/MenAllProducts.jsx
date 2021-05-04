@@ -1,13 +1,15 @@
 import { Container } from "@material-ui/core";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { productsContext } from "../../../contexts/ProductContext";
 import "./MenAllProducts.css";
 import MenCard from "./MenCard";
 const MenAllProducts = () => {
+    const [tshirt, setTshirt] = useState();
     const { menProducts, getMenCollection } = useContext(productsContext);
     useEffect(() => {
-        getMenCollection();
+        getMenCollection(6);
     }, []);
+
     return (
         <div className="men-wrapper">
             <Container>
