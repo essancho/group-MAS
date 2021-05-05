@@ -1,17 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap");
 
 .header {
+    /* position: fixed; */
+    /* z-index: 10; */
     width: 100%;
     height: 80px;
     background-color: white;
     display: flex;
-    justify-content: center;
+    box-shadow: 0px 0px 17px 2px #B0B0B0;
 }
 
 .logo {
     font-family: "Montserrat", sans-serif !important;
-    font-size: 14px;
-    text-decoration: none;
+    font-size: 28px !important;
+    text-decoration: none !important;
     font-weight: bold !important;
     color: black;
 }
@@ -23,11 +25,17 @@
     justify-content: space-between;
     align-items: center;
 }
-
-.nav-menu{
+.navMenu{
     display: flex;
-    margin-left: 80px;
+    justify-content: space-between;
+    align-items: center;
 }
+.navMenuItems{
+    margin-left: 40px !important;
+    font-family:"Montserrat", sans-serif !important ;
+    font-size:  14px !important;
+}
+
 
 .category-menu{
     font-family: "Montserrat", sans-serif !important;
@@ -38,10 +46,4 @@
     list-style-type: none;
 }
 
-.item-men{
-    padding-right: 40px;
-}
 
-.item-woman{
-    padding-right: 40px;
-}

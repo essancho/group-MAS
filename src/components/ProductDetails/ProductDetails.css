@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+.container{
+    display: flex;
+    justify-content: space-evenly;
+    height: 1258px;
+    background-color: #f3efeb;
+    padding-top: 40px;
+
+}
+.left{
+    width: 110px;
+}
+.center_img{
+    display: flex;
+    flex-direction: column ;
+}
+.center_img img{
+    width: 450px;
+    padding-bottom: 40px;
+}
+.right{
+    width: 420px;
+}
+.productTitle{
+    font-family: 'Lobster', cursive;
+    font-size: 30px !important;
+    text-align: left;
+    margin: 0 auto;
+}
+.productDesc{
+    font-size: 14px !important;
+    text-align: left;
+    font-family: montserrat,sans-serif;;
+}
+.productPrice{
+    font-size: 18px !important;
+    text-align: left;
+    font-family: montserrat,sans-serif;;
+}
+.left img{
+    width: 110px;
+    height: 136px;
+    padding-bottom: 10px;
+}
