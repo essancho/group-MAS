@@ -7,7 +7,14 @@ const UserProfile = () => {
             <div>
                 <p>{currentUser && currentUser.email}</p>
             </div>
+            <div>
+            <input type="text" value="First Name"/>
+            <input type="text"/>
+            </div>
+
+
         </div>
+        
     );
 };
 
