@@ -1,12 +1,22 @@
+
 import { Button, IconButton, Typography } from "@material-ui/core";
 import { Add, Person, PersonOutlined } from "@material-ui/icons";
+
 
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { adminUID } from "../../helpers/API";
+
 import Badge from "@material-ui/core/Badge";
 import { ShoppingCart } from "@material-ui/icons";
+
+import {Typography, Button, IconButton} from "@material-ui/core"
+import {PersonOutlined, SearchOutlined} from "@material-ui/icons";
+import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
+import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
+
+
 import "./Navbar.css";
 import { productsContext } from "../../contexts/ProductContext";
 import Logo from "../../assets/img/mainpage/PandCo.png"
@@ -18,6 +28,7 @@ const Navbar = () => {
         <div>
             <header className="header">
                 <div className="header-container">
+
                     <Link to="/">
 
                     <img width={120} src={Logo} alt="logo"/>
@@ -53,6 +64,7 @@ const Navbar = () => {
                             </IconButton>
                         </Link>
                     </div>
+
                 </div>
             </header>
             
