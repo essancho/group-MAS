@@ -9,6 +9,7 @@ import GoodsJournal from "../GoodsJournal/GoodsJournal";
 import FrontSaleProducts from "../FrontSaleProducts/FrontSaleProducts";
 import { Container } from "@material-ui/core";
 
+
 const HomeInfo = () => {
     return (
         <>

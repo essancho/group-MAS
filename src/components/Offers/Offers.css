@@ -7,8 +7,8 @@
 
 .offers-container {
     display: flex;
-    justify-content: space-between;
-    width: 1000px;
+    justify-content: space-evenly;
+    /* width: 1000px; */
     margin: 0 auto;
 }
 .offer-box {

@@ -1,4 +1,5 @@
 import { Button } from "@material-ui/core";
+import { ShoppingBasket } from "@material-ui/icons";
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
@@ -7,10 +8,11 @@ import { adminUID } from "../../helpers/API";
 
 const ProductDetails = (props) => {
     const { currentUser } = useAuth();
-    const { getProductById, productDetails } = useContext(productsContext);
+    const { getProductById, productDetails, addProductToCart, checkProductInCart } = useContext(productsContext);
     useEffect(() => {
         getProductById(props.match.params.id);
     }, []);
+    
     console.log(props.match.params.id);
     return (
         <div>
@@ -38,6 +40,10 @@ const ProductDetails = (props) => {
                     </div>
                 )}
             </div>
+            <Button variant="contained" color={
+                        checkProductInCart(productDetails[0] && productDetails[0].id) ? "secondary" : "primary"
+                    } onClick={() => addProductToCart(productDetails[0])}>Add to cart</Button>
+            
             {currentUser && currentUser.uid === adminUID ? (
                 <Link to={`/edit-product/${props.match.params.id}`}>
                     {" "}

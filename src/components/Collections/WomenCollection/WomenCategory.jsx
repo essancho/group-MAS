@@ -8,9 +8,10 @@ import WomenShirtLimit from "./WomenShirtLimit";
 import WomenTshirtLimit from "./WomenTshirtLimit";
 
 const WomenCategory = () => {
+    let category = "Women"
     return (
         <div>
-            <WomenCover />
+            <WomenCover category={category} />
             <Offers />
             <WomenAllLimit />
             <WomenTshirtLimit />

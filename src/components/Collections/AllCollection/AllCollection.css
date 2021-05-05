@@ -1,0 +1,16 @@
+.hits-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.hits-container ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+}
+.hits-container li {
+    margin: 10px;
+}
+.hits-container input {
+    border: none;
+}

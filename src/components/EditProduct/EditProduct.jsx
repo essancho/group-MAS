@@ -55,7 +55,7 @@ const EditProduct = (props) => {
                 <div className="edit-container">
                     <form onSubmit={handleSubmit}>
                         <TextField
-                            required
+                            
                             onChange={handleInputs}
                             label={localP.title}
                             type="text"
@@ -67,7 +67,7 @@ const EditProduct = (props) => {
                             id="new-sale-inp"
                             variant="outlined"
                             margin="dense"
-                            required={true}
+                            
                             size="small"
                             component="fieldset"
                         >
@@ -75,7 +75,7 @@ const EditProduct = (props) => {
                                 New or Sale?
                             </FormLabel>
                             <RadioGroup
-                                required={true}
+                                
                                 row
                                 aria-label="new-sale"
                                 name="category"
@@ -95,7 +95,7 @@ const EditProduct = (props) => {
                         </FormControl>
 
                         <TextField
-                            required
+                            
                             onChange={handleInputs}
                             label={localP.price}
                             placeholder="Enter price"
@@ -105,7 +105,7 @@ const EditProduct = (props) => {
                         />
 
                         <TextField
-                            required
+                            
                             onChange={handleInputs}
                             label={localP.desc && localP.desc.slice(0, 24)}
                             placeholder="Enter description"
@@ -115,7 +115,7 @@ const EditProduct = (props) => {
                         />
 
                         <TextField
-                            required
+                            
                             onChange={handleInputs}
                             inputRef={defaultValue}
                             placeholder="Enter URL"
@@ -125,7 +125,7 @@ const EditProduct = (props) => {
                         />
 
                         <TextField
-                            required
+                            
                             onChange={handleInputs}
                             placeholder="Enter URL"
                             inputRef={defaultValueSec}
@@ -137,16 +137,9 @@ const EditProduct = (props) => {
                             <button className="add-btnLog" type="submit">
                                 Edit Product
                             </button>
-                            <button
-                                className="add-btnLog"
-                                disabled={loading}
-                                to="/"
-                                component={Link}
-                            >
-                                Cancel
-                            </button>
                         </div>
                     </form>
+                    <Link to="/">Cancel</Link>
                 </div>
             ) : (
                 <h1>loading</h1>

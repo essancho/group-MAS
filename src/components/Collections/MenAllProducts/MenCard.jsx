@@ -10,6 +10,9 @@ const MenCard = (props) => {
     const [hover, setHover] = useState(false);
     const { deleteProduct } = useContext(productsContext);
     const { currentUser } = useAuth();
+
+    console.log(props, 'this is props')
+
     return (
         <div
             className="front-cards"
@@ -33,6 +36,7 @@ const MenCard = (props) => {
                 )}
             </Link>
             <br />
+            
             <span className="cards-title">{props.item.title}</span> <br />
             {props.item.category === "sale" ? (
                 <div>

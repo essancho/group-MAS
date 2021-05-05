@@ -2,14 +2,15 @@ import React, { useContext, useEffect } from "react";
 import "./FrontNewArrivals.css";
 import { productsContext } from "../../contexts/ProductContext";
 import FrontNewCards from "./FrontNewCards";
-import { Container } from "@material-ui/core";
+import { Container, Link } from "@material-ui/core";
 import FrontNewLastCard from "./FrontNewLastCard";
 
 const FrontNewArrivals = () => {
     const { newProducts, getNewCollection } = useContext(productsContext);
     useEffect(() => {
-        getNewCollection();
+        getNewCollection(6);
     }, []);
+    let category = "New"
     return (
         <div className="new-wrapper">
             <Container>
@@ -23,7 +24,8 @@ const FrontNewArrivals = () => {
                                 item={item}
                             />
                         ))}
-                    <FrontNewLastCard />
+
+                    <FrontNewLastCard category={category} />
                 </div>
             </Container>
         </div>

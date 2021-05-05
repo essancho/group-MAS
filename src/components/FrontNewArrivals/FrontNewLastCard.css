@@ -9,16 +9,26 @@
     justify-content: center;
     align-items: center;
     width: 345px;
-    height: 430px;
-    background-color: white;
+    max-height: 430px;
     cursor: pointer;
+    background-color: rgba(253, 235, 196, 0.1);
+}
+.new-last-card:hover {
+    
+    background-color: white;
+    
 }
 
 .last-card-text {
+    text-decoration: none;
     font-family: "moret";
     font-weight: bold;
     color: #7e7469;
     font-size: 26px;
     text-align: center;
     width: 345px;
+}
+
+.last-card-text a {
+    text-decoration: none;
 }

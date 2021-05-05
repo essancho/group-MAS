@@ -10,9 +10,9 @@ const GoodsJournal = () => {
                         <span className="goods-btn">Goods</span>
                     </div>
                 </Link>
-                <Link to="/journal">
-                    <div className="journal-big-category">
-                        <span className="goods-btn">Journal</span>
+                <Link to="/all-collection">
+                    <div className="all-big-category">
+                        <span className="goods-btn">The Collection</span>
                     </div>
                 </Link>
             </div>

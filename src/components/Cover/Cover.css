@@ -14,7 +14,7 @@
     height: 500px;
     background-image: url(../../assets/img/mainpage/front-page-3.jpeg);
     background-size: cover;
-    background-origin: padding-box;
+    margin-top: 0;
     background-position: center;
     color: white;
 }

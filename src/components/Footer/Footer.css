@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap");
+@font-face {
+    font-family: "moret";
+    src: local("FontsFree-Net-moret4.ttf"), local("Moret Regular"),
+        url("../../assets/fonts/FontsFree-Net-moret4.ttf") format("woff2");
+}
+
+.font-mont {
+    font-family: "Montserrat", sans-serif;
+}
+
+.font-moret {
+    font-family: "moret";
+}
+

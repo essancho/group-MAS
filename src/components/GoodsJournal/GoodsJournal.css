@@ -20,17 +20,17 @@
     height: 630px;
     min-width: 650px;
     background-image: url(../../assets/img/mainpage/goods.jpeg);
-    background-size: cover;
+    background-size:cover;
     background-position-y: -50px;
     cursor: pointer;
 }
-.journal-big-category {
+.all-big-category {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 630px;
     min-width: 650px;
-    background-image: url(../../assets/img/mainpage/journal.jpeg);
+    background-image: url(../../assets/img/mainpage/all-collection.jpeg);
     background-size: cover;
     cursor: pointer;
 }
