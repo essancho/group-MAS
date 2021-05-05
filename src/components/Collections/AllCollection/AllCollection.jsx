@@ -19,16 +19,7 @@ const AllCollection = () => {
     const { allProducts, getCollection } = useContext(productsContext);
     const [itemLimit, setItemLimit] = useState(6);
     const [loading, setLoading] = useState(false);
-    // useEffect(() => {
-    //     getCollection(itemLimit);
-    // }, [itemLimit]);
-    // function changeLimit() {
-    //     setItemLimit(itemLimit + 6);
-    //     if (itemLimit >= 18) {
-    //         setLoading(true);
-    //         return;
-    //     }
-    // }
+    
     function Hit(props) {
         return (
           <div>
@@ -52,9 +43,7 @@ const AllCollection = () => {
             </div> 
              
         </InstantSearch>    
-        
 
-        
         </div>
         </>
     );
