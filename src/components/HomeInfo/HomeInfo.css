@@ -1,3 +1,9 @@
 .home-info {
+    
     background-color: #f3efeb;
+}
+
+body {
+    box-sizing: border-box;
+    margin: 0;
 }

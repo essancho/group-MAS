@@ -1,4 +1,8 @@
-import React, { useContext, useEffect} from "react";
+
+import { Button } from "@material-ui/core";
+import { ShoppingBasket } from "@material-ui/icons";
+import React, { useContext, useEffect } from "react";
+
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { productsContext } from "../../contexts/ProductContext";
@@ -10,10 +14,11 @@ import "./ProductDetails.css"
 
 const ProductDetails = (props) => {
     const { currentUser } = useAuth();
-    const { getProductById, productDetails } = useContext(productsContext);
+    const { getProductById, productDetails, addProductToCart, checkProductInCart } = useContext(productsContext);
     useEffect(() => {
         getProductById(props.match.params.id);
     }, []);
+    
     console.log(props.match.params.id);
     return (
         <div>
@@ -27,6 +32,7 @@ const ProductDetails = (props) => {
                         <img src={productDetails[0].img1} alt="" />
                         <img src={productDetails[0].img2} alt="" />
                     </div>
+
 
                 <div className="right">
                     <p className="productTitle">{productDetails[0].title}</p>

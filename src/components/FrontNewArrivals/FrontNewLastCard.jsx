@@ -1,10 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./FrontNewLastCard.css";
-const FrontNewLastCard = () => {
+const FrontNewLastCard = (props) => {
     return (
-        <div className="new-last-card">
-            <div className="last-card-text">View All New</div>
-        </div>
+        
+        <Link to={`/all-${props.category}`}>
+            <div className="new-last-card">
+                <div className="last-card-text">View All {props.category}</div>
+            </div>
+        </Link>
     );
 };
 

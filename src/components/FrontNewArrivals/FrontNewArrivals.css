@@ -14,14 +14,18 @@
 }
 .new-arrivals {
     overflow: auto;
+    height: 580px;
     /* width: 100%; */
     display: flex;
 }
 
 .new-last-card {
-    width: 345px;
-    height: 550px;
+    
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.new-last {
+    height: 550px;
 }

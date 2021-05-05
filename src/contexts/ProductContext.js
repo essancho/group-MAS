@@ -1,6 +1,10 @@
 import React, { useReducer } from "react";
 import { db } from "../components/firebase/firebase";
-
+import {
+    calcSubPrice,
+    calcTotalPrice,
+    getCountProductsInCart,
+} from "../helpers/calcPrice";
 export const productsContext = React.createContext();
 const INIT_STATE = {
     menProducts: [],
@@ -17,6 +21,9 @@ const INIT_STATE = {
     womenShirt: [],
     womenPants: [],
     womenOW: [],
+    cart: [],
+    cartLength: getCountProductsInCart(),
+    goodsProducts: []
 };
 
 const reducer = (state = INIT_STATE, action) => {
@@ -49,6 +56,12 @@ const reducer = (state = INIT_STATE, action) => {
             return { ...state, womenPants: action.payload };
         case "GET_WOMEN_OW_PRODUCTS":
             return { ...state, womenOW: action.payload };
+        case "GET_CART":
+            return { ...state, cart: action.payload };
+        case "CHANGE_CART_COUNT":
+            return { ...state, cartLength: action.payload };
+            case "GET_GOODS_PRODUCTS":
+            return { ...state, goodsProducts: action.payload };
 
         default:
             return state;
@@ -57,10 +70,13 @@ const reducer = (state = INIT_STATE, action) => {
 const ProductsContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, INIT_STATE);
     let collection = db.collection("products");
+    let orders = db.collection("orders");
 
-    async function getCollection() {
+    async function getCollection(limit) {
         let arr = [];
-        await collection.get().then((snapshot) => {
+        await collection
+        
+        .limit(limit).get().then((snapshot) => {
             snapshot.docs.map((item) => {
                 return arr.push(item.data());
             });
@@ -71,13 +87,13 @@ const ProductsContextProvider = ({ children }) => {
             payload: arr,
         });
     }
-    async function getSaleCollection() {
+    async function getSaleCollection(limit) {
         let arr = [];
 
         await collection
             .where("category", "==", "sale")
             .orderBy("createdAt", "desc")
-            .limit(6)
+            .limit(limit)
             .get()
             .then((snapshot) => {
                 snapshot.docs.map((item) => {
@@ -91,13 +107,13 @@ const ProductsContextProvider = ({ children }) => {
         });
     }
 
-    async function getNewCollection() {
+    async function getNewCollection(limit) {
         let arr = [];
 
         await collection
             .where("category", "==", "new")
             .orderBy("createdAt", "desc")
-            .limit(6)
+            .limit(limit)
             .get()
             .then((snapshot) => {
                 snapshot.docs.map((item) => {
@@ -120,6 +136,18 @@ const ProductsContextProvider = ({ children }) => {
         });
         dispatch({
             type: "GET_MEN_PRODUCTS",
+            payload: arr,
+        });
+    }
+    async function getGoodsCollection(limit) {
+        let typeCollection = collection.where("type", "==", "goods");
+        let arr = [];
+        let data = await typeCollection.limit(limit).get();
+        data.docs.map((item) => {
+            return arr.push(item.data());
+        });
+        dispatch({
+            type: "GET_GOODS_PRODUCTS",
             payload: arr,
         });
     }
@@ -290,8 +318,93 @@ const ProductsContextProvider = ({ children }) => {
             payload: arr,
         });
     }
+    
+    // -------------CART --------------------
+
+    function addProductToCart(product) {
+        let cart = JSON.parse(localStorage.getItem("cart"));
+        if (!cart) {
+            cart = {
+                products: [],
+                totalPrice: 0,
+            };
+        }
+        let newProduct = {
+            item: product,
+            count: 1,
+            subPrice: 0,
+        };
+
+        let filteredCart = cart.products.filter(
+            (elem) => elem.item.id === product.id
+        );
+        if (filteredCart.length > 0) {
+            cart.products = cart.products.filter(
+                (elem) => elem.item.id !== product.id
+            );
+        } else {
+            cart.products.push(newProduct);
+        }
+
+        newProduct.subPrice = calcSubPrice(newProduct);
+        cart.totalPrice = calcTotalPrice(cart.products);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        dispatch({
+            type: "CHANGE_CART_COUNT",
+            payload: cart.products.length,
+        });
+    }
+
+    function getCart() {
+        let cart = JSON.parse(localStorage.getItem("cart"));
+        if (!cart) {
+            cart = {
+                products: [],
+                totalPrice: 0,
+            };
+        }
+        dispatch({
+            type: "GET_CART",
+            payload: cart,
+        });
+    }
+    function cleanCart() {
+        localStorage.removeItem('cart');
+    }
+
+    function changeProductCount(count, id) {
+        let cart = JSON.parse(localStorage.getItem("cart"));
+        cart.products = cart.products.map((elem) => {
+            if (elem.item.id === id) {
+                elem.count = count;
+                elem.subPrice = calcSubPrice(elem);
+            }
+            return elem;
+        });
+        cart.totalPrice = calcTotalPrice(cart.products);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        getCart();
+    }
+
+    function checkProductInCart(id) {
+        let cart = JSON.parse(localStorage.getItem("cart"));
+        if (!cart) {
+            cart = {
+                products: [],
+                totalPrice: 0,
+            };
+        }
+        let newCart = cart.products.filter((elem) => elem.item.id === id);
+        return newCart.length > 0 ? true : false;
+    }
+
+    // --------------- VALUES -------------------------------
+
+    
 
     const value = {
+        cart: state.cart,
+        cartLength: state.cartLength,
         productDetails: state.productDetails,
         allProducts: state.allProducts,
         womenProducts: state.womenProducts,
@@ -306,6 +419,13 @@ const ProductsContextProvider = ({ children }) => {
         womenShirt: state.womenShirt,
         womenPants: state.womenPants,
         womenOW: state.womenOW,
+        goodsProducts: state.goodsProducts,
+        getGoodsCollection,
+        cleanCart,
+        addProductToCart,
+        getCart,
+        changeProductCount,
+        checkProductInCart,
         getWomenTshirtCollection,
         getWomenShirtCollection,
         getWomenPantsCollection,

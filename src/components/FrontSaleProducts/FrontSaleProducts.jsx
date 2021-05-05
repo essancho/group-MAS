@@ -8,8 +8,9 @@ import FrontNewLastCard from "../FrontNewArrivals/FrontNewLastCard";
 const FrontSaleProducts = () => {
     const { saleProducts, getSaleCollection } = useContext(productsContext);
     useEffect(() => {
-        getSaleCollection();
+        getSaleCollection(6);
     }, []);
+    let category = "Sale"
     return (
         <div className="new-wrapper">
             <Container>
@@ -23,7 +24,7 @@ const FrontSaleProducts = () => {
                                 item={item}
                             />
                         ))}
-                    <FrontNewLastCard />
+                    <FrontNewLastCard category={category} />
                 </div>
             </Container>
         </div>
