@@ -14,7 +14,14 @@
     z-index: 5;
 }
 
-
+.logo {
+    width: 100px;
+}
+@media all and (max-width: 450px) {
+    .logo {
+        width: 60px;
+    }
+}
 
 .header-container {
     width: 75%;

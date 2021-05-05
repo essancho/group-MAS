@@ -5,10 +5,24 @@
 }
 
 .good-journal-container {
-    height: 630px;
-    display: flex;
+    height: 550px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     width: 100%;
     overflow: hidden;
+    background-color: #f3efeb;
+}
+@media all and (max-width: 800px) {
+    .good-journal-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        height: 1000px;
+    }
+}
+@media all and (max-width: 800px) {
+    body {
+        font-size: 14px;
+    }
 }
 .good-journal-container a {
     text-decoration: none;
@@ -17,8 +31,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 630px;
-    min-width: 650px;
+    height: 550px;
+    
     background-image: url(../../assets/img/mainpage/goods.jpeg);
     background-size:cover;
     background-position-y: -50px;
@@ -28,8 +42,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 630px;
-    min-width: 650px;
+    height: 550px;
+    
     background-image: url(../../assets/img/mainpage/all-collection.jpeg);
     background-size: cover;
     cursor: pointer;

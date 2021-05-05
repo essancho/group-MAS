@@ -12,20 +12,8 @@ const Footer = () => {
     return (
         <div className="font-mont">
             <Container fluid className="pt-3 mt-5"> 
-                <Container className="text-center">
-                    <Image className="mt-3 mb-5"
-                     style={{
-                        height:"60px",
-                    }}
-                    src="https://cdn.shopify.com/s/files/1/0496/8602/0247/files/hard-craft_300x_c08a16d9-7eb7-447d-9241-f255ad3b4860_720x.png?v=1602866170" fluid/>
-                <Container>
-                <p className="mb-5">We know that nothing ever worth holding onto was built overnight. That’s why we trust in the process. We take our time and do <br/> 
-                    it right. We’re proud that our goods go through some seriously hard craft. We explore the road less travelled and go where <br/>
-                    others don’t. Because life shouldn’t be boring.</p>
-                </Container>
                 
-                </Container>
-                <Row>
+                <Row style={{background:"#2c241d"}}>
                     <Col lg={6} className="ml-auto mr-auto pt-5 pl-5 pb-5" 
                         style={{background:"#2c241d",color:"#beb9b4"}}
                     >

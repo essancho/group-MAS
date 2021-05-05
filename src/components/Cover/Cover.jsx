@@ -17,7 +17,10 @@ const Cover = () => {
                     <Link to="/women-category">
                         <button className="cover-btn">Shop Women's</button>
                     </Link>
+                    <Link to="/goods">
+                    
                     <button className="cover-btn">Shop Goods</button>
+                    </Link>
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Card from "react-credit-cards";
 import "./PaymentForm.css";
 import SupportedCards from "./Cards";
@@ -11,6 +11,7 @@ import {
 import "react-credit-cards/es/styles-compiled.css";
 import { Button, TextField } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import { productsContext } from "../../contexts/ProductContext";
 
 export default class App extends React.Component {
   state = {
@@ -23,6 +24,7 @@ export default class App extends React.Component {
     formData: null,
   };
   
+
 
   handleCallback = ({ issuer }, isValid) => {
     if (isValid) {
@@ -125,6 +127,7 @@ export default class App extends React.Component {
             <div className="form-actions">
               <Button onClick={() => {
                 localStorage.removeItem("cart");
+                
               }} to="/" component={Link}>CONFIRM PURCHASE</Button>
             </div>
           </form>

@@ -52,37 +52,7 @@ const AllCollection = () => {
             </div> 
              
         </InstantSearch>    
-        {/* <Container>
-            <div>
-
-       
-            </div>
-
-            <div
-                className="all-flex"
-                style={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    justifyContent: "center",
-                    marginTop: "50px"
-                }}
-            >
-                {allProducts &&
-                    allProducts.map((item) => (
-                        <MenCard key={item.id} id={item.id} item={item} />
-                    ))}
-            </div>
-            <div style={{display: "flex", justifyContent: "center", marginBottom: "50px"}}>
-
-                <Button
-                    variant="contained"
-                    disabled={loading}
-                    onClick={() => changeLimit()}
-                >
-                    Show More
-                </Button>
-            </div>
-        </Container> */}
+        
 
         
         </div>

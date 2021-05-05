@@ -62,6 +62,7 @@ const reducer = (state = INIT_STATE, action) => {
             return { ...state, cartLength: action.payload };
             case "GET_GOODS_PRODUCTS":
             return { ...state, goodsProducts: action.payload };
+            case "CHANGE_COUNT" : return {...state, cartLength: action.payload};
 
         default:
             return state;
@@ -178,6 +179,7 @@ const ProductsContextProvider = ({ children }) => {
             .delete()
             .then(() => {});
         getCollection();
+        
     }
 
     async function getProductById(id) {
@@ -398,6 +400,14 @@ const ProductsContextProvider = ({ children }) => {
         return newCart.length > 0 ? true : false;
     }
 
+    async function removeAllProductsFromCart() {
+        await localStorage.removeItem('cart')
+        await dispatch({
+            type: "CHANGE_COUNT",
+            payload: null
+        })
+    }
+
     // --------------- VALUES -------------------------------
 
     
@@ -420,6 +430,7 @@ const ProductsContextProvider = ({ children }) => {
         womenPants: state.womenPants,
         womenOW: state.womenOW,
         goodsProducts: state.goodsProducts,
+        removeAllProductsFromCart,
         getGoodsCollection,
         cleanCart,
         addProductToCart,

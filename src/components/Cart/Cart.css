@@ -1,8 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap");
+@font-face {
+    font-family: "moret";
+    src: local("FontsFree-Net-moret4.ttf"), local("Moret Regular"),
+        url("../../assets/fonts/FontsFree-Net-moret4.ttf") format("woff2");
+}
+body {
+    background-color: #f3efeb;
+}
+
 td {
     padding: 15px 0;
-    border-bottom: 1px solid darkgrey;
 }
 
 .cart td {
     padding: 10px 50px;
+}
+
+.cart {
+    font-family: "Montserrat", sans-serif;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    background-color: #f3efeb;
+}
+.total {
+    /* margin-top: 20px; */
+    font-weight: bolder;
+}
+
+.btn-total {
+    margin-top: 20px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }

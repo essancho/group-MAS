@@ -1,8 +1,5 @@
 
-import { Button, IconButton, Typography } from "@material-ui/core";
-import { Add, Person, PersonOutlined } from "@material-ui/icons";
-
-
+import { Add, Person } from "@material-ui/icons";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
@@ -31,14 +28,14 @@ const Navbar = () => {
 
                     <Link to="/">
 
-                    <img width={120} src={Logo} alt="logo"/>
+                    <img className="logo" src={Logo} alt="logo"/>
                     </Link>
                     <div>
 
                     {currentUser ? (
                         <Button to="/dashboard" component={Link}>
                             <Person color="primary" />
-                            {currentUser.email}
+                            
                         </Button>
                     ) : (
                         <IconButton to="/login" component={Link}>
@@ -47,7 +44,7 @@ const Navbar = () => {
                     )}
                     {currentUser && currentUser.uid === adminUID ? (
                         <Button startIcon={<Add/>} to="/add-product" component={Link}>
-                            Add New
+                            
                         </Button>
                     ) : null}
                     <Link to="/cart" style={{ color: "inherit" }}>

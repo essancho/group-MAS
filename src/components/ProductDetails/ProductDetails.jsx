@@ -1,9 +1,9 @@
 
-import { Button } from "@material-ui/core";
-import { ShoppingBasket } from "@material-ui/icons";
+import { Button, ButtonGroup, IconButton } from "@material-ui/core";
+import { Delete, Edit, ShoppingBasket } from "@material-ui/icons";
 import React, { useContext, useEffect } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { productsContext } from "../../contexts/ProductContext";
 import { adminUID } from "../../helpers/API";
@@ -13,11 +13,17 @@ import "./ProductDetails.css"
 
 
 const ProductDetails = (props) => {
+    const history = useHistory();
     const { currentUser } = useAuth();
-    const { getProductById, productDetails, addProductToCart, checkProductInCart } = useContext(productsContext);
+    const { getProductById, productDetails, addProductToCart, checkProductInCart, deleteProduct } = useContext(productsContext);
     useEffect(() => {
         getProductById(props.match.params.id);
     }, []);
+
+    async function deleteProductById() {
+         await deleteProduct(props.match.params.id);
+         history.push("/");
+    }
     
     console.log(props.match.params.id);
     return (
@@ -51,11 +57,29 @@ const ProductDetails = (props) => {
                         <p className="productPrice">${productDetails[0].price}.00</p>
                     )}
                     <p className="productDesc">{productDetails[0].desc}</p>
+                    {currentUser && currentUser ? (
+                        <Button variant="contained" color={checkProductInCart(productDetails[0].id) ? "secondary" : "primary"} onClick={() => addProductToCart(productDetails[0])}>
+                            Add to Cart
+                        </Button>
+                    ) : (
+                        <Button to="/login" component={Link}>
+                            Log In
+                        </Button>
+                    )}
                     {currentUser && currentUser.uid === adminUID ? (
+                        <>
+                        
                         <Link to={`/edit-product/${props.match.params.id}`}>
                             {" "}
-                            <button>Edit</button>{" "}
+                            <IconButton>
+                                <Edit/>
+                            </IconButton>
+                            {" "}
                         </Link>
+                            <IconButton onClick={() => deleteProductById()}>
+                                <Delete/>
+                            </IconButton>
+                        </>
                     ) : null}
                 </div>
                 </div>

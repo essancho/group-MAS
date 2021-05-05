@@ -6,3 +6,15 @@ body {
 a {
     text-decoration: none;
 }
+a {
+    text-decoration: none imp !important;
+}
+a:hover {
+    text-decoration: none imp !important;
+}
+
+@media all and (max-width: 600px) {
+    * {
+        font-size: 10px;
+    }
+}

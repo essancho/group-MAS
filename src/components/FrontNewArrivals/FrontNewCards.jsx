@@ -47,11 +47,7 @@ const FrontNewCards = (props) => {
             ) : (
                 <span className="cards-price">${props.item.price}.00</span>
             )}
-            {currentUser && currentUser.uid === adminUID ? (
-                <IconButton onClick={() => deleteProduct(props.item.id)}>
-                    <Delete />
-                </IconButton>
-            ) : null}
+            
         </div>
     );
 };

@@ -27,6 +27,8 @@ import PaymentForm from "./components/PaymentForm/PaymentForm";
 import Footer from "./components/Footer/Footer";
 import AllSaleItems from "./components/Collections/AllSaleItems/AllSaleItems";
 import AllGoods from "./components/Collections/AllGoods/AllGoods";
+import Buy from "./components/Buy/Buy";
+import ScrollToTop from "./ScrollToTop";
 
 // import { ADMIN_KEY, APP_ID } from "../functions";
 
@@ -39,6 +41,7 @@ const Routes = () => {
             <AuthProvider>
                 <ProductsContextProvider>
                     <Navbar />
+                        <ScrollToTop/>
                     <Switch>
                         <AdminPrivateRoute
                             exact
@@ -79,7 +82,7 @@ const Routes = () => {
                         <Route exact path="/goods" component={AllGoods} />
                         <Route exact path="/cart" component={Cart}/>
                         <PrivateRoute exact path="/address-form" component={AddressForm}/>
-                        <PrivateRoute exact path="/payment" component={PaymentForm}/> 
+                        <PrivateRoute exact path="/payment" component={Buy}/> 
                     </Switch>
                     <Footer/>
                 </ProductsContextProvider>
